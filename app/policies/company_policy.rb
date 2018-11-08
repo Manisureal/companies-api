@@ -10,9 +10,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def create?
-    permitted_user = User.find_by(authentication_token: "4d50016bbd955f2ea7306a3a64582d1f")
-    if permitted_user
-      true
-    end
+    # User.find_by(authentication_token: "4d50016bbd955f2ea7306a3a64582d1f")
+    # user.has_role?(:api_user)
   end
 end

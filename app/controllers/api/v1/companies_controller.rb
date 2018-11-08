@@ -1,16 +1,20 @@
 class Api::V1::CompaniesController < Api::V1::BaseController
+
+  # acts_as_token_authentication_handler_for User, except: [ :index, :show ]
+
   def index
-    @companies = policy_scope(Company)
+    @companies = Company.all
+    # @companies = policy_scope(Company)
   end
 
   def show
     @company = Company.find(params[:id])
-    authorize @company
+    # authorize @company
   end
 
   def create
     @company = Company.new(company_params)
-    authorize @company
+    # authorize @company
     if @company.save
       render :show, status: :created
     else
